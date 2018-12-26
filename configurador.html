@@ -1,89 +1,165 @@
 <!DOCTYPE html>
-<html>
+<!--
+  CEFET 2018
+  Júlia Goretkin Laurentino | 2° ano
+-->
+  <html>
 <head>
-	<title>questão 1</title>
-	<meta charset="utf-8">
-<!--estilo-->
+  <title>questão 1</title>
+  <meta charset="utf-8">
+
 <style type="text/css">
-	input{
-		margin: 10px;
-	}
-	p{
-		background-color: #eeeeee;
-	}
+  input, button{
+    margin: 10px;
+  }
+  p{
+    background-color: #eeeeee;
+  }
 
 </style>
 </head>
-<body>
-<h1>Configurador De Texto</h1>
-<h3>by: Júlia Goretkin Laurentino | 2° ano | CEFET 2018</h3>
+<body onload="valor();">
 
-<p id="paragrafo">seu texto ficará aqui</p>
 
 <script type="text/javascript">
-function aplica(){
-    var t=document.getElementById("texto").value;
-    var p=document.getElementById("paragrafo");
-    p.innerHTML=t;
-    p.style.fontSize=document.getElementById("tam_fonte").value+"px";
-    p.style.fontFamily=document.getElementById("fonte").value;
-    p.style.color=document.getElementById("cor_fonte").value;
-    if(document.getElementById("negrito").checked)
-    {
-    	p.style.fontWeight="bold";
-    }
-    else{
-    	p.style.fontWeight="normal";
-    }
-    if(document.getElementById("italico").checked)
-    {
-    	p.style.fontStyle="italic";
-    }
-    else{
-    	p.style.fontStyle="normal";
-    }
-    if(document.getElementById("variacao").checked)
-    {
-    	p.style.fontVariant="small-caps";
-    }
-    else{
-    	p.style.fontVariant="normal";
-    }
+function valor(){//recebe e exibe o valor do tamanho da fonte a cada mudança e ao iniciar a página
+  var r=document.getElementById("range_valor");
+  r.innerHTML=document.getElementById("tam_fonte").value+"px";
+  }
+function recalc(tam){//recalcula e exibe o valor do tamanho da fonte a cada vez que o ususário usa uma configuração pré definida
+  var r=document.getElementById("range_valor");
+  document.getElementById("tam_fonte").value=tam;
+  r.innerHTML=document.getElementById("tam_fonte").value+"px";
+}
+function aux(){//recebe e exibe o texto a ser configurado
+  t=document.getElementById("texto").value;
+  p=document.getElementById("paragrafo");
+  p.innerHTML=t;
+}
+function aplica(){//aplica a configuração escolhida pelo usuário
+  p.style.fontSize=document.getElementById("tam_fonte").value+"px";
+  p.style.fontFamily=document.getElementById("fonte").value;
+  p.style.color=document.getElementById("cor_fonte").value;
+  if(document.getElementById("negrito").checked)
+  {
+    p.style.fontWeight="bold";
+  }
+  else{
+    p.style.fontWeight="normal";
+  }
+  if(document.getElementById("italico").checked)
+  {
+    p.style.fontStyle="italic";
+  }
+  else{
+    p.style.fontStyle="normal";
+  }
+  if(document.getElementById("variacao").checked)
+  {
+    p.style.fontVariant="small-caps";
+  }
+  else{
+    p.style.fontVariant="normal";
+  }
+  if(document.getElementById("sublinhado").checked)
+  {
+    p.style.textDecoration="underline";
+  }
+  else{
+    p.style.textDecoration="blink";
+  }
+}
+function titulo1(){//configuração pré definida de tamanho 16pt(22px), negrito, sublinhado e fonte times 
+  p.style.fontSize=22+"px";
+  recalc(22);
+  p.style.fontFamily="Times, Serif";
+  p.style.color="black";
+  p.style.fontWeight="bold";
+  p.style.fontStyle="normal";
+  p.style.fontVariant="normal";
+  p.style.textDecoration="underline";
+}
+function titulo2(){//configuração pré definida de tamanho 16pt(22px), negrito e fonte times
+  p.style.fontSize=22+"px";
+  recalc(22);
+  p.style.fontFamily="Times, Serif";
+  p.style.color="black";
+  p.style.fontWeight="bold";
+  p.style.fontStyle="normal";
+  p.style.fontVariant="normal";
+  p.style.textDecoration="blink";
+}
+function citacao(){//configuração pré definida de tamanho 12pt(16 px), itálico e fonte times
+  p.style.fontSize=16+"px";
+  recalc(16);
+  p.style.fontFamily="Times, Serif";
+  p.style.color="black";
+  p.style.fontWeight="normal";
+  p.style.fontStyle="italic";
+  p.style.fontVariant="normal";
+  p.style.textDecoration="blink";
+}
+function corpoDoTexto(){//configuração pré definida de tamanho 12pt(16px) e fonte times
+  p.style.fontSize=16+"px";
+  recalc(16);
+  p.style.fontFamily="Times, Serif";
+  p.style.color="black";
+  p.style.fontWeight="normal";
+  p.style.fontStyle="normal";
+  p.style.fontVariant="normal";
+  p.style.textDecoration="blink";
 }
 </script>
 
 
-<form id="formulario">
-	insira aqui o seu texto aqui<br><textarea name="texto" id="texto" value=true>oi</textarea><br>
+
+
+<h1>Configurador De Texto HTML</h1>
+<h3>Júlia Goretkin Laurentino | 2° ano | CEFET 2018</h3>
+
+<p id="paragrafo">seu texto ficará aqui</p>
+
+<form id="formulario" method="POST" action="">
+  insira aqui o seu texto aqui<br><textarea name="texto" id="texto" value=true>oi</textarea><br>
 <fieldset>
-	tamanho da fonte: <input type="range" name="tam_fonte" id="tam_fonte" min="6" max="96" step="3">
-	<br>
-	cor da fonte: <input type="color" name="cor_fonte" id="cor_fonte" >
-	<br>
-	<legend>configure o seu texto</legend>
-	fonte: <select name="fonte" id="fonte" >
-		<option value="Arial, Sans-Serif">Arial</option>
-	   	<option value="Georgia, Serif">Georgia</option>
-	    <option value="Verdana, Sans-Serif">Verdana</option>
-   	    <option value="Geneva, Sans-Serif">Geneva</option>
-   	    <option value="Tahoma, Sans-Serif">Tahoma</option>
-   	    <option value="Lucida Console, Sans-Serif">Lucida Console</option>
-   	    <option value="Trebuchet MS, Sans-Serif">Trebuchet MS</option>
-   	    <option value="Cursive, Sans-Serif">Cursive</option>
-   	    <option value="Times, Serif">Times</option>	
-   	    <option value="Courier, Mono">Courier</option>
-	</select>
-	<br>
-	<br>
-	outros efeitos
-	<br>
-	negrito <input type="checkbox" id="negrito">
-	<br>
-	italico <input type="checkbox" id="italico">
-	<br>
-	small-caps <input type="checkbox" id="variacao">
+  tamanho da fonte: <input type="range" name="tam_fonte" id="tam_fonte" min="8" max="48" value="16" onchange="valor();">
+  <spam id="range_valor"></spam><!--irá exibir o valor do range-->
+  <br>
+  cor da fonte: <input type="color" name="cor_fonte" id="cor_fonte" >
+  <br>
+  <legend>configure o seu texto</legend>
+  fonte: <select name="fonte" id="fonte" >
+    <option value="Arial, Sans-Serif">Arial</option>
+      <option value="Georgia, Serif">Georgia</option>
+      <option value="Verdana, Sans-Serif">Verdana</option>
+        <option value="Geneva, Sans-Serif">Geneva</option>
+        <option value="Tahoma, Sans-Serif">Tahoma</option>
+        <option value="Lucida Console, Sans-Serif">Lucida Console</option>
+        <option value="Trebuchet MS, Sans-Serif">Trebuchet MS</option>
+        <option value="Cursive, Sans-Serif">Cursive</option>
+        <option value="Times, Serif">Times</option> 
+        <option value="Courier, Mono">Courier</option>
+  </select>
+  <br>
+  <br>
+  outros efeitos
+  <br>
+  negrito <input type="checkbox" id="negrito">
+  <br>
+  italico <input type="checkbox" id="italico">
+  <br>
+  small-caps <input type="checkbox" id="variacao">
+  <br>
+  sublinhado <input type="checkbox" id="sublinhado">
+<br>
+usar padrao para:
+<br><!--butões de configurações pré definidas-->
+<button type="button" onclick="aux(); titulo1();">titulo 1</button>
+<button type="button" onclick="aux(); titulo2();">titulo 2</button>
+<button type="button" onclick="aux(); citacao();">citacao</button>
+<button type="button" onclick="aux(); corpoDoTexto();">corpo do texto</button>
 </fieldset>
-<input type="button" onclick="aplica();" name="botao" id="botao" value="configurar">
+<input type="button" onclick="aux(); aplica();" name="botao" id="botao" value="configurar">
 </form>
 
 </body>
