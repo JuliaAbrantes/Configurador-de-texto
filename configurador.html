@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>questão 1</title>
+	<meta charset="utf-8">
+<!--estilo-->
+<style type="text/css">
+	input{
+		margin: 10px;
+	}
+	p{
+		background-color: #eeeeee;
+	}
+
+</style>
+</head>
+<body>
+<h1>Configurador De Texto</h1>
+<h3>by: Júlia Goretkin Laurentino | 2° ano | CEFET 2018</h3>
+
+<p id="paragrafo">seu texto ficará aqui</p>
+
+<script type="text/javascript">
+function aplica(){
+    var t=document.getElementById("texto").value;
+    var p=document.getElementById("paragrafo");
+    p.innerHTML=t;
+    p.style.fontSize=document.getElementById("tam_fonte").value+"px";
+    p.style.fontFamily=document.getElementById("fonte").value;
+    p.style.color=document.getElementById("cor_fonte").value;
+    if(document.getElementById("negrito").checked)
+    {
+    	p.style.fontWeight="bold";
+    }
+    else{
+    	p.style.fontWeight="normal";
+    }
+    if(document.getElementById("italico").checked)
+    {
+    	p.style.fontStyle="italic";
+    }
+    else{
+    	p.style.fontStyle="normal";
+    }
+    if(document.getElementById("variacao").checked)
+    {
+    	p.style.fontVariant="small-caps";
+    }
+    else{
+    	p.style.fontVariant="normal";
+    }
+}
+</script>
+
+
+<form id="formulario">
+	insira aqui o seu texto aqui<br><textarea name="texto" id="texto" value=true>oi</textarea><br>
+<fieldset>
+	tamanho da fonte: <input type="range" name="tam_fonte" id="tam_fonte" min="6" max="96" step="3">
+	<br>
+	cor da fonte: <input type="color" name="cor_fonte" id="cor_fonte" >
+	<br>
+	<legend>configure o seu texto</legend>
+	fonte: <select name="fonte" id="fonte" >
+		<option value="Arial, Sans-Serif">Arial</option>
+	   	<option value="Georgia, Serif">Georgia</option>
+	    <option value="Verdana, Sans-Serif">Verdana</option>
+   	    <option value="Geneva, Sans-Serif">Geneva</option>
+   	    <option value="Tahoma, Sans-Serif">Tahoma</option>
+   	    <option value="Lucida Console, Sans-Serif">Lucida Console</option>
+   	    <option value="Trebuchet MS, Sans-Serif">Trebuchet MS</option>
+   	    <option value="Cursive, Sans-Serif">Cursive</option>
+   	    <option value="Times, Serif">Times</option>	
+   	    <option value="Courier, Mono">Courier</option>
+	</select>
+	<br>
+	<br>
+	outros efeitos
+	<br>
+	negrito <input type="checkbox" id="negrito">
+	<br>
+	italico <input type="checkbox" id="italico">
+	<br>
+	small-caps <input type="checkbox" id="variacao">
+</fieldset>
+<input type="button" onclick="aplica();" name="botao" id="botao" value="configurar">
+</form>
+
+</body>
+</html>
